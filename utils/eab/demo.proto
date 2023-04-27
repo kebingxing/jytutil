@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package trpc.demo.service1.demohttp;
+
+option java_package="com.tencent.dubhe.trpc.demo.client.demo";
+
+option  java_multiple_files = false;
+
+option java_outer_classname = "DemoHttpSvr";
+
+// 定义服务接口
+service DemoHttp {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  rpc query (QueryReq) returns (QueryResp) {}
+
+  rpc add (AddReq) returns (AddResp) {}
+
+  rpc sayBlockedTenHello (HelloRequest) returns (HelloReply) {}
+
+  rpc sayBlockedHundredHello (HelloRequest) returns (HelloReply) {}
+
+  rpc saySimpleHello (HelloRequest) returns (HelloReply) {}
+
+  rpc sayAsyncSimpleHello (HelloRequest) returns (HelloReply) {}
+
+}
+
+// 请求参数
+message HelloRequest {
+  string msg = 1;
+}
+
+// 响应参数
+message HelloReply {
+  string msg = 1;
+  string request_id = 2;
+}
+
+message QueryReq {
+  string saas_id = 1;
+  string uid = 2;
+}
+
+message QueryResp {
+  string saas_id = 1;
+  string uid = 2;
+  string nick_name = 3;
+  string request_id = 4;
+}
+
+message AddReq {
+  string saas_id = 1;
+  string uid = 2;
+  string nick_name = 3;
+}
+
+message AddResp {
+  string is_ok = 1;
+  string request_id = 2;
+}
+
+
+
+
